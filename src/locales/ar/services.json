@@ -1,0 +1,15 @@
+{
+  "Services": "الخدمات",
+  "Service": "الخدمة",
+  "Service ID": "معرف الخدمة",
+  "Service Image": "صورة الخدمة",
+  "Service Name": "اسم الخدمة",
+  "Service Details": "تفاصيل الخدمة",
+  "Service Description": "وصف الخدمة",
+  "Sub Services": "الخدمات الفرعية",
+  "Sub Service ID": "رقم الخدمة الفرعية",
+  "Sub Service Image": "صورة الخدمة الفرعية",
+  "Sub Service Name": "اسم الخدمة الفرعية",
+  "Sub Service": "الخدمة الفرعية",
+  "SubServices": "الخدمة الفرعية"
+}

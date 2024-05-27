@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .main-container{
+    @apply w-full h-full bg-white border rounded-xl flex flex-col gap-4 overflow-hidden;
+  }
+  .btn {
+    @apply py-[10px] px-4 w-full flex items-center justify-center whitespace-nowrap rounded-lg border shadow text-white font-semibold duration-300;
+  }
+  .btn-primary {
+    @apply btn bg-secondary border-secondary  hover:bg-primary hover:border-primary;
+  }
+  .btn-secondary {
+    @apply btn bg-gray500 border-gray500 hover:bg-primary hover:border-primary;
+  }
+}
