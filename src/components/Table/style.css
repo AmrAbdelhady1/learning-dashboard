@@ -41,12 +41,12 @@
   justify-content: center !important;
 }
 
-.css-n3fyjk-MuiDataGrid-root .MuiDataGrid-container--top [role="row"],
-.css-n3fyjk-MuiDataGrid-root .MuiDataGrid-container--bottom [role="row"] {
+.MuiDataGrid-container--top [role="row"],
+.MuiDataGrid-container--bottom [role="row"] {
   background: #f3f0f0 !important;
 }
 
-.css-n3fyjk-MuiDataGrid-root .MuiDataGrid-cell--textLeft {
+.MuiDataGrid-cell--textLeft {
   text-align: center !important;
   justify-content: center !important;
   align-items: center !important;
