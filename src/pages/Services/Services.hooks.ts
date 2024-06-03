@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../redux/store";
 import { fetchData as fetch } from "../../axios/axiosClient";
 import { addSnackbar, updateLoader } from "../../redux/reducers";
+import { useTranslation } from "react-i18next";
 
 export const useServices = () => {
+  const { t } = useTranslation();
   const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
@@ -18,7 +20,7 @@ export const useServices = () => {
       dispatch(
         updateLoader({
           details: {
-            title: "Loading Data",
+            title: t("Loading Data"),
             desc: "Fetching Data...",
           },
           show: true,
@@ -38,12 +40,12 @@ export const useServices = () => {
         setCount(res?.data?.totalCount);
       }
     } catch (error) {
-      dispatch(addSnackbar({ message: "Network Error", type: "error" }));
+      dispatch(addSnackbar({ message: t("Network Error"), type: "error" }));
     } finally {
       dispatch(
         updateLoader({
           details: {
-            title: "Loading Data",
+            title: t("Loading Data"),
             desc: "Fetching Data...",
           },
           show: false,

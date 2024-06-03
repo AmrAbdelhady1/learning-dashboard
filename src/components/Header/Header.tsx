@@ -37,8 +37,8 @@ const links = [
     path: "/reviews",
   },
   {
-    name: "Send Mail",
-    path: "/send-mail",
+    name: "Mails",
+    path: "/mails",
   },
 ];
 

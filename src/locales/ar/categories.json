@@ -3,5 +3,11 @@
   "Category Title": "عنوان الفئة",
   "Category": "الفئة",
   "Categories": "الفئات",
-  "Category Details": "تفاصيل الفئة"
+  "Category Details": "تفاصيل الفئة",
+  "Category Name": "اسم الفئة",
+  "Enter your category name": "أدخل اسم الفئة",
+  "Category Name is required": "اسم الفئة مطلوب",
+  "Category Name Arabic": "اسم الفئة بالعربية",
+  "Enter your category name arabic": "أدخل اسم الفئة بالعربية",
+  "Category Name Arabic is required": "اسم الفئة بالعربية مطلوب"
 }

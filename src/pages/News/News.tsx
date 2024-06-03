@@ -8,10 +8,13 @@ import { DeleteIcon, EditIcon, ShowIcon } from "../../assets/svg/header-svg";
 import DeleteMenu from "../../components/DeleteMenu/DeleteMenu";
 import { Link } from "react-router-dom";
 import { useNews } from "./News.hooks";
+import EditArticle from "./EditArticle";
+import { MAIN_URL } from "../../../env";
 
 const News = () => {
   const { t } = useTranslation();
   const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [openEditPage, setOpenPage] = useState<boolean>(false);
   const {
     data,
     count,
@@ -33,15 +36,32 @@ const News = () => {
       sortable: false,
     },
     {
+      field: "imageUrl",
+      headerName: t("Article Image"),
+      flex: 1,
+      sortable: false,
+      renderCell: ({ formattedValue }) => {
+        if (formattedValue) {
+          return (
+            <img
+              alt="course image"
+              src={`${MAIN_URL}${formattedValue}`}
+              className="w-20 h-20 object-cover rounded-md"
+            />
+          );
+        }
+      },
+    },
+    {
       field: "Title",
       headerName: t("Article Title"),
       flex: 1,
       sortable: false,
       renderCell: ({ row }) => {
         return (
-          <>
-            {t("locale") === "ar" ? row?.categoryNameArabic : row?.categoryName}
-          </>
+          <p className="line-clamp-1">
+            {t("locale") === "ar" ? row?.titleArabic : row?.title}
+          </p>
         );
       },
     },
@@ -52,26 +72,28 @@ const News = () => {
       sortable: false,
       renderCell: ({ row }) => {
         return (
-          <>
-            {t("locale") === "ar" ? row?.categoryNameArabic : row?.categoryName}
-          </>
+          <p className="line-clamp-1">
+            {t("locale") === "ar" ? row?.authorArabic : row?.author}
+          </p>
         );
       },
     },
     {
-      field: "Published",
-      headerName: t("Published At"),
+      field: "content",
+      headerName: t("Content"),
       flex: 1,
       sortable: false,
-      renderCell: ({ formattedValue }) => {
-        if (formattedValue) {
-          return <p>{moment(formattedValue).format("MMM D, YYYY")}</p>;
-        }
+      renderCell: ({ row }) => {
+        return (
+          <p className="line-clamp-1">
+            {t("locale") === "ar" ? row?.contentArabic : row?.content}
+          </p>
+        );
       },
     },
     {
-      field: "createdAt",
-      headerName: t("Created At"),
+      field: "publishedDate",
+      headerName: t("Published At"),
       flex: 1,
       sortable: false,
       renderCell: ({ formattedValue }) => {
@@ -91,7 +113,13 @@ const News = () => {
             <Link to={`/article-details/${row?.id}`} className="cursor-pointer">
               <ShowIcon />
             </Link>
-            <span className="cursor-pointer">
+            <span
+              className="cursor-pointer"
+              onClick={() => {
+                handleEditPage();
+                setSelectedItem(row);
+              }}
+            >
               <EditIcon />
             </span>
             <span
@@ -114,10 +142,23 @@ const News = () => {
     }
   };
 
-  return (
+  const handleEditPage = () => {
+    setOpenPage(!openEditPage);
+  };
+
+  return openEditPage ? (
+    <EditArticle
+      articleData={selectedItem}
+      onClose={() => {
+        handleEditPage();
+        setSelectedItem(null);
+      }}
+    />
+  ) : (
     <MainPageContainer
       title="News"
       btnName="Article"
+      btnLink="/add-article"
       search={search}
       onChange={(e) => setSearch(e.target.value)}
     >
@@ -143,14 +184,14 @@ const News = () => {
 
       {selectedItem && (
         <DeleteMenu
-          title="Article"
+          title="News"
           id={selectedItem?.id}
           onClose={() => setSelectedItem(null)}
           onSave={handleDelete}
           name={
             t("locale") === "ar"
-              ? selectedItem?.categoryNameArabic
-              : selectedItem?.categoryName
+              ? selectedItem?.titleArabic
+              : selectedItem?.title
           }
         />
       )}

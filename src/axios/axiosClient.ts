@@ -1,8 +1,14 @@
 import axios from "axios";
+import { MAIN_URL } from "../../env";
 
-export const fetchData = async (body = {}, url: string, method: string) => {
+export const fetchData = async (
+  body = {},
+  url: string,
+  method: string,
+  contentType?: boolean
+) => {
   const api = axios.create({
-    baseURL: "http://detc.somee.com/api/",
+    baseURL: `${MAIN_URL}/api/`,
   });
 
   api.interceptors.request.use(async (config) => {
@@ -22,7 +28,11 @@ export const fetchData = async (body = {}, url: string, method: string) => {
       method,
       url,
       data: body,
-      headers: { "Content-Type": "Application/json" },
+      headers: {
+        "Content-Type": contentType
+          ? "multipart/form-data"
+          : "Application/json",
+      },
       params: method === "GET" ? body : "",
     });
     return response?.data || response;

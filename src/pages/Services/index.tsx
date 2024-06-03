@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import Services from "./Services";
@@ -22,12 +22,23 @@ const MainServices = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const activeTab = queryParams.get("tab") || "services";
+  const [showSideBar, setShowSideBar] = useState<boolean>(true);
 
   return (
     <div className="flex flex-col gap-6">
-      <Sidebar navLinks={navLinks} activeTab={activeTab} />
+      {showSideBar && <Sidebar navLinks={navLinks} activeTab={activeTab} />}
 
-      {activeTab === "sub_services" ? <SubServices /> : <Services />}
+      {activeTab === "sub_services" ? (
+        <SubServices
+          showTabs={() => setShowSideBar(true)}
+          hideTabs={() => setShowSideBar(false)}
+        />
+      ) : (
+        <Services
+          showTabs={() => setShowSideBar(true)}
+          hideTabs={() => setShowSideBar(false)}
+        />
+      )}
     </div>
   );
 };

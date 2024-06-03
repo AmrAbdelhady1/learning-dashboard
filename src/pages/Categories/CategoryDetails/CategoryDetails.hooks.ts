@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../../redux/store";
 import { addSnackbar, updateLoader } from "../../../redux/reducers";
 import { fetchData as fetch } from "../../../axios/axiosClient";
+import { useTranslation } from "react-i18next";
 
 export const useCategoryDetails = (id: string) => {
+  const { t } = useTranslation();
   const [data, setData] = useState([]);
 
   const dispatch = useAppDispatch();
@@ -13,7 +15,7 @@ export const useCategoryDetails = (id: string) => {
       dispatch(
         updateLoader({
           details: {
-            title: "Loading Data",
+            title: t("Loading Data"),
             desc: "Fetching Data...",
           },
           show: true,
@@ -26,12 +28,12 @@ export const useCategoryDetails = (id: string) => {
         setData(res?.data);
       }
     } catch (error) {
-      dispatch(addSnackbar({ message: "Network Error", type: "error" }));
+      dispatch(addSnackbar({ message: t("Network Error"), type: "error" }));
     } finally {
       dispatch(
         updateLoader({
           details: {
-            title: "Loading Data",
+            title: t("Loading Data"),
             desc: "Fetching Data...",
           },
           show: false,

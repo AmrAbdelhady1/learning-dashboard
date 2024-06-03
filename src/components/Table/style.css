@@ -1,7 +1,8 @@
 .MuiDataGrid-columnHeaders {
-  color: #11142d;
-  font-size: 11.898px;
+  color: #11142d !important;
+  font-size: 11.898px !important;
   font-weight: 500 !important;
+  background: #f3f0f0 !important;
 }
 
 .MuiDataGrid-root .MuiDataGrid-container {
@@ -11,13 +12,13 @@
 .MuiDataGrid-root {
   border: 1px solid var(--shadow, #e3e6ec);
   border-radius: 0px !important;
-  overflow: hidden;
-  width: 100%;
+  overflow: hidden !important;
+  width: 100% !important;
   min-width: 750px !important;
 }
 
 .MuiDataGrid-columnSeparator {
-  display: none;
+  display: none !important;
 }
 
 .MuiDataGrid-row:focus {
@@ -50,4 +51,8 @@
   justify-content: center !important;
   align-items: center !important;
   display: flex !important;
+}
+
+.MuiDataGrid-root .MuiDataGrid-columnHeaders {
+  background-color: #f3f0f0 !important;
 }

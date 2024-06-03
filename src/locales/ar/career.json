@@ -19,5 +19,23 @@
   "Career Type": "نوع الوظيفة",
   "Career Description": "وصف الوظيفة",
   "Career City": "مدينة الوظيفة",
-  "Career Site": "موقع الوظيفة"
+  "Career Site": "موقع الوظيفة",
+  "Career Name": "اسم المهنة",
+  "Enter the career name": "أدخل اسم المهنة",
+  "Career Name is required": "اسم المهنة مطلوب",
+  "Arabic Career Name": "الاسم العربي للمهنة",
+  "Enter the arabic career name": "أدخل الاسم العربي للمهنة",
+  "Arabic Career Name is required": "الاسم العربي للمهنة مطلوب",
+  "Description is required": "الوصف مطلوب",
+  "Arabic Description": "الوصف العربي",
+  "Enter the arabic description": "أدخل الوصف العربي",
+  "Arabic Description is required": "الوصف العربي مطلوب",
+  "Location is required": "الموقع مطلوب",
+  "Arabic Location": "الموقع العربي",
+  "Enter the arabic location": "أدخل الموقع العربي",
+  "Arabic Location is required": "الموقع العربي مطلوب",
+  "City": "المدينة",
+  "Onsite": "في الموقع",
+  "Please select the": "يرجى اختيار"
+
 }

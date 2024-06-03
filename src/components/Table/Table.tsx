@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 
 import { DataGrid, DataGridProps } from "@mui/x-data-grid";

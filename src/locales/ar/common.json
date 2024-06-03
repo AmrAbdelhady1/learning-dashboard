@@ -1,5 +1,9 @@
 {
   "dir": "rtl",
   "locale": "ar",
-  "language": "English"
+  "language": "English",
+  "Home Page Video": "فيديو الصفحة الرئيسية",
+  "Upload new video": "تحميل فيديو جديد",
+  "Loading Data": "جاري تحميل البيانات",
+  "Network Error": "خطأ في الشبكة"
 }

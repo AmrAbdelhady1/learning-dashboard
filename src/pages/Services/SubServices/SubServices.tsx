@@ -8,10 +8,18 @@ import { DeleteIcon, EditIcon, ShowIcon } from "../../../assets/svg/header-svg";
 import DeleteMenu from "../../../components/DeleteMenu/DeleteMenu";
 import { Link } from "react-router-dom";
 import { useSubServices } from "./SubServices.hooks";
+import { MAIN_URL } from "../../../../env";
+import EditSubService from "./EditSubServices";
 
-const SubServices = () => {
+interface Props {
+  showTabs: () => void;
+  hideTabs: () => void;
+}
+
+const SubServices = ({ showTabs, hideTabs }: Props) => {
   const { t } = useTranslation();
   const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [openEditPage, setOpenPage] = useState<boolean>(false);
   const {
     data,
     count,
@@ -41,7 +49,7 @@ const SubServices = () => {
         if (formattedValue) {
           return (
             <img
-              src={formattedValue}
+              src={`${MAIN_URL}${formattedValue}`}
               alt="sub service"
               width={40}
               height={40}
@@ -59,7 +67,9 @@ const SubServices = () => {
       renderCell: ({ row }) => {
         return (
           <>
-            {t("locale") === "ar" ? row?.subServiceNameArabic : row?.subServiceName}
+            {t("locale") === "ar"
+              ? row?.subServiceNameArabic
+              : row?.subServiceName}
           </>
         );
       },
@@ -85,10 +95,20 @@ const SubServices = () => {
       renderCell: ({ row }) => {
         return (
           <div className="flex items-center gap-3">
-            <Link to={`/sub-service-details/${row?.id}`} className="cursor-pointer">
+            <Link
+              to={`/sub-service-details/${row?.id}`}
+              className="cursor-pointer"
+            >
               <ShowIcon />
             </Link>
-            <span className="cursor-pointer">
+            <span
+              className="cursor-pointer"
+              onClick={() => {
+                handleEditPage();
+                setSelectedItem(row);
+                hideTabs();
+              }}
+            >
               <EditIcon />
             </span>
             <span
@@ -111,10 +131,24 @@ const SubServices = () => {
     }
   };
 
-  return (
+  const handleEditPage = () => {
+    setOpenPage(!openEditPage);
+  };
+
+  return openEditPage ? (
+    <EditSubService
+      subServiceData={selectedItem}
+      onClose={() => {
+        handleEditPage();
+        setSelectedItem(null);
+        showTabs();
+      }}
+    />
+  ) : (
     <MainPageContainer
       title="Sub Services"
       btnName="Sub Service"
+      btnLink="/add-sub-service"
       search={search}
       onChange={(e) => setSearch(e.target.value)}
     >

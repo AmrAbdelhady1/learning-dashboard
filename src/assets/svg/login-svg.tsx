@@ -1,6 +1,12 @@
-import React from'react'
+import React from "react";
 
-export const LogoSvg = ({width,height}:{width:string,height:string}) => {
+export const LogoSvg = ({
+  width,
+  height,
+}: {
+  width: string;
+  height: string;
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -327,6 +333,62 @@ export const MerchantEye = () => {
         d="M10.4984 17.5167C7.3651 17.5167 4.40677 15.6834 2.37344 12.5001C1.4901 11.1251 1.4901 8.8834 2.37344 7.50006C4.4151 4.31673 7.37344 2.4834 10.4984 2.4834C13.6234 2.4834 16.5818 4.31673 18.6151 7.50006C19.4984 8.87506 19.4984 11.1167 18.6151 12.5001C16.5818 15.6834 13.6234 17.5167 10.4984 17.5167ZM10.4984 3.7334C7.80677 3.7334 5.23177 5.35007 3.43177 8.17507C2.80677 9.15007 2.80677 10.8501 3.43177 11.8251C5.23177 14.6501 7.80677 16.2667 10.4984 16.2667C13.1901 16.2667 15.7651 14.6501 17.5651 11.8251C18.1901 10.8501 18.1901 9.15007 17.5651 8.17507C15.7651 5.35007 13.1901 3.7334 10.4984 3.7334Z"
         fill="#C0946C"
       />
+    </svg>
+  );
+};
+
+export const PlayBtn = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="103"
+      height="103"
+      viewBox="0 0 103 103"
+      fill="none"
+    >
+      <g filter="url(#filter0_d_796_8003)">
+        <rect x="12" y="8" width="79" height="79" rx="24" fill="white" />
+        <path
+          d="M68.25 50.8971C71.25 49.1651 71.25 44.8349 68.25 43.1029L46.5 30.5455C43.5 28.8135 39.75 30.9785 39.75 34.4426L39.75 59.5574C39.75 63.0215 43.5 65.1865 46.5 63.4545L68.25 50.8971Z"
+          fill="#237283"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_796_8003"
+          x="0"
+          y="0"
+          width="103"
+          height="103"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="4" />
+          <feGaussianBlur stdDeviation="6" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0.152941 0 0 0 0 0.141176 0 0 0 0 0.141176 0 0 0 0.15 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_796_8003"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_796_8003"
+            result="shape"
+          />
+        </filter>
+      </defs>
     </svg>
   );
 };

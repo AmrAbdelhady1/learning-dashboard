@@ -33,7 +33,7 @@ const InputField = ({ label, name, type, placeholder, register }: Props) => {
         <input
           type={showPassword ? "text" : "password"}
           className="w-full bg-transparent focus:outline-none"
-          placeholder={placeholder}
+          placeholder={t(placeholder)}
           onFocus={() => setTouched(true)}
           {...register(name, {
             required: true,
@@ -53,7 +53,7 @@ const InputField = ({ label, name, type, placeholder, register }: Props) => {
       <input
         type="text"
         className="w-full bg-transparent py-2.5 px-3.5 border border-secondary rounded-lg focus:outline-none focus:border-transparent focus:ring-2 focus:ring-primary"
-        placeholder={placeholder}
+        placeholder={t(placeholder)}
         {...register(name, { required: true })}
       />
     </div>

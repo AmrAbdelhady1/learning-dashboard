@@ -8,9 +8,11 @@ import MainPageContainer from "../../containers/MainPageContainer/MainPageContai
 import { DeleteIcon, EditIcon, ShowIcon } from "../../assets/svg/header-svg";
 import DeleteMenu from "../../components/DeleteMenu/DeleteMenu";
 import { Link } from "react-router-dom";
+import EditCareer from "./EditCareer";
 
 const Careers = () => {
   const { t } = useTranslation();
+  const [openEditPage, setOpenPage] = useState<boolean>(false);
   const [selectedCareer, setSelectedCareer] = useState<any>(null);
   const {
     data,
@@ -93,7 +95,13 @@ const Careers = () => {
             <Link to={`/career-details/${row?.id}`} className="cursor-pointer">
               <ShowIcon />
             </Link>
-            <span className="cursor-pointer">
+            <span
+              className="cursor-pointer"
+              onClick={() => {
+                handleEditPage();
+                setSelectedCareer(row);
+              }}
+            >
               <EditIcon />
             </span>
             <span
@@ -116,10 +124,23 @@ const Careers = () => {
     }
   };
 
-  return (
+  const handleEditPage = () => {
+    setOpenPage(!openEditPage);
+  };
+
+  return openEditPage ? (
+    <EditCareer
+      careerData={selectedCareer}
+      onClose={() => {
+        handleEditPage();
+        setSelectedCareer(null);
+      }}
+    />
+  ) : (
     <MainPageContainer
       title="Careers"
       btnName="Career"
+      btnLink="/add-career"
       search={search}
       onChange={(e) => setSearch(e.target.value)}
     >

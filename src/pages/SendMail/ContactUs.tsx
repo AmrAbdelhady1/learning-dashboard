@@ -11,6 +11,7 @@ const ContactUs = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
@@ -21,8 +22,8 @@ const ContactUs = () => {
       dispatch(
         updateLoader({
           details: {
-            title: "Please Wait...",
-            desc: "Please Wait...",
+            title: t("Please Wait..."),
+            desc: t("Please Wait..."),
           },
           show: true,
         })
@@ -35,23 +36,24 @@ const ContactUs = () => {
       );
 
       if (res) {
-        dispatch(addSnackbar({ message: "Email sent Successfully" }));
+        reset();
+        dispatch(addSnackbar({ message: t("Email sent Successfully") }));
       } else {
         dispatch(
           addSnackbar({
-            message: "Something went wrong",
+            message: t("Something went wrong"),
             type: "error",
           })
         );
       }
     } catch (err) {
-      dispatch(addSnackbar({ message: "network error", type: "error" }));
+      dispatch(addSnackbar({ message: t("network error"), type: "error" }));
     } finally {
       dispatch(
         updateLoader({
           details: {
-            title: "Please Wait...",
-            desc: "Please Wait...",
+            title: t("Please Wait..."),
+            desc: t("Please Wait..."),
           },
           show: false,
         })

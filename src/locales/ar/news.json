@@ -4,5 +4,21 @@
   "Article Author": "مؤلف المقال",
   "Published At": "تم النشر في",
   "Article": "المقال",
-  "Article Details": "تفاصيل المقال"
+  "Article Details": "تفاصيل المقال",
+  "Content": "المحتوى",
+  "Article Image": "صورة المقال",
+  "Author": "المؤلف",
+  "Enter the author": "أدخل المؤلف",
+  "Author is required": "المؤلف مطلوب",
+  "Author Arabic": "المؤلف بالعربية",
+  "Enter the author arabic": "أدخل المؤلف بالعربية",
+  "Author Arabic is required": "المؤلف بالعربية مطلوب",
+  "Title Arabic": "العنوان بالعربية",
+  "Enter the title arabic": "أدخل العنوان بالعربية",
+  "Title Arabic is required": "العنوان بالعربية مطلوب",
+  "Enter the content": "أدخل المحتوى",
+  "Content is required": "المحتوى مطلوب",
+  "Content Arabic": "المحتوى بالعربية",
+  "Enter the content arabic": "أدخل المحتوى بالعربية",
+  "Content Arabic is required": "المحتوى بالعربية مطلوب"
 }

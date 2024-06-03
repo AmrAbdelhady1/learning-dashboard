@@ -21,8 +21,8 @@ const DeleteMenu = ({ id, title, name, onClose, onSave }: Props) => {
       dispatch(
         updateLoader({
           details: {
-            title: "Please Wait...",
-            desc: "Please Wait...",
+            title: t("Please Wait..."),
+            desc: t("Please Wait..."),
           },
           show: true,
         })
@@ -34,16 +34,16 @@ const DeleteMenu = ({ id, title, name, onClose, onSave }: Props) => {
         onSave();
         dispatch(addSnackbar({ message: res?.message }));
       } else {
-        dispatch(addSnackbar({ message: "Something wrong", type: "error" }));
+        dispatch(addSnackbar({ message: res?.errorMessage, type: "error" }));
       }
     } catch (err) {
-      dispatch(addSnackbar({ message: "network error", type: "error" }));
+      dispatch(addSnackbar({ message: t("network error"), type: "error" }));
     } finally {
       dispatch(
         updateLoader({
           details: {
-            title: "Please Wait...",
-            desc: "Please Wait...",
+            title: t("Please Wait..."),
+            desc: t("Please Wait..."),
           },
           show: false,
         })

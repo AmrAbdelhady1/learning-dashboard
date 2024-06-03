@@ -5,5 +5,18 @@
   "Reviews": "المراجعات",
   "Review": "مراجعة",
   "Review Details": "تفاصيل المراجعة",
-  "Client Job": "وظيفة العميل"
+  "Client Job": "وظيفة العميل",
+  "Job": "الوظيفة",
+  "Enter the job": "أدخل الوظيفة",
+  "Job is required": "الوظيفة مطلوبة",
+  "Job Arabic": "الوظيفة بالعربية",
+  "Enter the job arabic": "أدخل الوظيفة بالعربية",
+  "Job Arabic is required": "الوظيفة بالعربية مطلوبة",
+  "Reviwer Name": "اسم المراجع",
+  "Review Image": "صورة المراجعة",
+  "Enter the reviwer name": "أدخل اسم المراجع",
+  "Reviwer Name is required": "اسم المراجع مطلوب",
+  "Reviwer Name Arabic": "اسم المراجع بالعربية",
+  "Enter the reviwer name arabic": "أدخل اسم المراجع بالعربية",
+  "Reviwer Name Arabic is required": "اسم المراجع بالعربية مطلوب"
 }

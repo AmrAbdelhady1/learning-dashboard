@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import DetailsPageContainer from "../../../containers/DetailsPageContainer/DetailsPageContainer";
 import { useServiceDetails } from "./ServiceDetails.hooks";
+import { MAIN_URL } from "../../../../env";
 
 const ServiceDetails = () => {
   const params = useParams();
@@ -22,6 +23,17 @@ const ServiceDetails = () => {
           <span className="text-primary">{t("Service Description")}: </span>
           {t("locale") === "ar" ? data?.descriptionArabic : data?.description}
         </p>
+
+        {data?.imageUrl && (
+          <div className="flex items-center gap-4">
+            <span className="text-primary">{t("Service Image")}: </span>
+            <img
+              alt="course image"
+              src={`${MAIN_URL}${data?.imageUrl}`}
+              className="w-40 h-40 object-cover rounded-md"
+            />
+          </div>
+        )}
       </div>
     </DetailsPageContainer>
   );

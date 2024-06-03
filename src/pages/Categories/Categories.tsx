@@ -8,9 +8,11 @@ import { DeleteIcon, EditIcon, ShowIcon } from "../../assets/svg/header-svg";
 import DeleteMenu from "../../components/DeleteMenu/DeleteMenu";
 import { Link } from "react-router-dom";
 import { useCategories } from "./Categories.hooks";
+import EditCategory from "./EditCategory";
 
 const Categories = () => {
   const { t } = useTranslation();
+  const [openEditPage, setOpenPage] = useState<boolean>(false);
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
   const {
     data,
@@ -46,17 +48,6 @@ const Categories = () => {
       },
     },
     {
-      field: "createdAt",
-      headerName: t("Created At"),
-      flex: 1,
-      sortable: false,
-      renderCell: ({ formattedValue }) => {
-        if (formattedValue) {
-          return <p>{moment(formattedValue).format("MMM D, YYYY")}</p>;
-        }
-      },
-    },
-    {
       field: "actions",
       headerName: t("Actions"),
       flex: 1,
@@ -70,7 +61,13 @@ const Categories = () => {
             >
               <ShowIcon />
             </Link>
-            <span className="cursor-pointer">
+            <span
+              className="cursor-pointer"
+              onClick={() => {
+                handleEditPage();
+                setSelectedCategory(row);
+              }}
+            >
               <EditIcon />
             </span>
             <span
@@ -93,10 +90,23 @@ const Categories = () => {
     }
   };
 
-  return (
+  const handleEditPage = () => {
+    setOpenPage(!openEditPage);
+  };
+
+  return openEditPage ? (
+    <EditCategory
+      categoryData={selectedCategory}
+      onClose={() => {
+        handleEditPage();
+        setSelectedCategory(null);
+      }}
+    />
+  ) : (
     <MainPageContainer
       title="Categories"
       btnName="Category"
+      btnLink="/add-category"
       search={search}
       onChange={(e) => setSearch(e.target.value)}
     >

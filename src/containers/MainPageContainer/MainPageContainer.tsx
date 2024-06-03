@@ -1,17 +1,27 @@
 import { useTranslation } from "react-i18next";
 import React, { ReactNode, useState } from "react";
 
+import { Link } from "react-router-dom";
+
 import { SearchIcon } from "../../assets/svg/header-svg";
 
 interface Props {
   title: string;
   search: string;
   btnName: string;
+  btnLink: string;
   children: ReactNode;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const MainPageContainer = ({ title, children, search, onChange, btnName }: Props) => {
+const MainPageContainer = ({
+  title,
+  children,
+  search,
+  onChange,
+  btnName,
+  btnLink,
+}: Props) => {
   const { t } = useTranslation();
   const [touched, setTouched] = useState<boolean>(false);
 
@@ -42,9 +52,11 @@ const MainPageContainer = ({ title, children, search, onChange, btnName }: Props
             <SearchIcon />
           </div>
 
-          <button className="btn-primary !w-fit">
-            {t("Add")} {t(btnName)}
-          </button>
+          {btnName && (
+            <Link to={btnLink} className="btn-primary !w-fit">
+              {t("Add")} {t(btnName)}
+            </Link>
+          )}
         </div>
       </div>
 

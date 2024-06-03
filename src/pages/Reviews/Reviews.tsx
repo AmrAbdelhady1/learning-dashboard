@@ -8,10 +8,13 @@ import { DeleteIcon, EditIcon, ShowIcon } from "../../assets/svg/header-svg";
 import DeleteMenu from "../../components/DeleteMenu/DeleteMenu";
 import { Link } from "react-router-dom";
 import { useReviews } from "./Reviews.hooks";
+import { MAIN_URL } from "../../../env";
+import EditReview from "./EditReview";
 
 const Reviews = () => {
   const { t } = useTranslation();
   const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [openEditPage, setOpenPage] = useState<boolean>(false);
   const {
     data,
     count,
@@ -33,16 +36,29 @@ const Reviews = () => {
       sortable: false,
     },
     {
+      field: "imageUrl",
+      headerName: t("Review Image"),
+      flex: 1,
+      sortable: false,
+      renderCell: ({ formattedValue }) => {
+        if (formattedValue) {
+          return (
+            <img
+              alt="review image"
+              src={`${MAIN_URL}${formattedValue}`}
+              className="w-20 h-20 object-cover rounded-md"
+            />
+          );
+        }
+      },
+    },
+    {
       field: "Title",
       headerName: t("Review Title"),
       flex: 1,
       sortable: false,
       renderCell: ({ row }) => {
-        return (
-          <>
-            {t("locale") === "ar" ? row?.titleArabic : row?.title}
-          </>
-        );
+        return <>{t("locale") === "ar" ? row?.titleArabic : row?.title}</>;
       },
     },
     {
@@ -64,11 +80,7 @@ const Reviews = () => {
       flex: 1,
       sortable: false,
       renderCell: ({ row }) => {
-        return (
-          <>
-            {t("locale") === "ar" ? row?.jobArabic : row?.job}
-          </>
-        );
+        return <>{t("locale") === "ar" ? row?.jobArabic : row?.job}</>;
       },
     },
     {
@@ -85,17 +97,6 @@ const Reviews = () => {
       },
     },
     {
-      field: "createdAt",
-      headerName: t("Created At"),
-      flex: 1,
-      sortable: false,
-      renderCell: ({ formattedValue }) => {
-        if (formattedValue) {
-          return <p>{moment(formattedValue).format("MMM D, YYYY")}</p>;
-        }
-      },
-    },
-    {
       field: "actions1",
       headerName: t("Actions"),
       flex: 1,
@@ -106,7 +107,13 @@ const Reviews = () => {
             <Link to={`/review-details/${row?.id}`} className="cursor-pointer">
               <ShowIcon />
             </Link>
-            <span className="cursor-pointer">
+            <span
+              className="cursor-pointer"
+              onClick={() => {
+                handleEditPage();
+                setSelectedItem(row);
+              }}
+            >
               <EditIcon />
             </span>
             <span
@@ -129,10 +136,23 @@ const Reviews = () => {
     }
   };
 
-  return (
+  const handleEditPage = () => {
+    setOpenPage(!openEditPage);
+  };
+
+  return openEditPage ? (
+    <EditReview
+      reviewData={selectedItem}
+      onClose={() => {
+        handleEditPage();
+        setSelectedItem(null);
+      }}
+    />
+  ) : (
     <MainPageContainer
       title="Reviews"
       btnName="Review"
+      btnLink="/add-review"
       search={search}
       onChange={(e) => setSearch(e.target.value)}
     >

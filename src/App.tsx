@@ -9,18 +9,27 @@ import { SnackbarContainer } from "./containers/Notifier";
 import Home from "./pages/Home/Home";
 import News from "./pages/News/News";
 import Login from "./pages/Login/Login";
+import MainServices from "./pages/Services";
 import Careers from "./pages/Careers/Careers";
 import Reviews from "./pages/Reviews/Reviews";
+import Courses from "./pages/Courses/Courses";
 import Categories from "./pages/Categories/Categories";
+import AddCareer from "./pages/Careers/AddCareer/AddCareer";
+import AddCategory from "./pages/Categories/AddCategory/AddCategory";
 import LoggedInLayout from "./containers/LoggedInLayout/LoggedInLayout";
-import CareerDetails from "./pages/Careers/CareerDetails/CareerDetails";
 import ArticleDetails from "./pages/News/ArticleDetails/ArticleDetails";
 import ReviewDetails from "./pages/Reviews/ReviewDetails/ReviewDetails";
-import CategoryDetails from "./pages/Categories/CategoryDetails/CategoryDetails";
-import MainServices from "./pages/Services";
+import CareerDetails from "./pages/Careers/CareerDetails/CareerDetails";
+import CourseDetails from "./pages/Courses/CourseDetails/CourseDetails";
 import ServiceDetails from "./pages/Services/ServiceDetails/ServiceDetails";
+import CategoryDetails from "./pages/Categories/CategoryDetails/CategoryDetails";
 import SubServiceDetails from "./pages/Services/SubServicesDetails/SubServicesDetails";
-import SendMail from "./pages/SendMail";
+import AddCourse from "./pages/Courses/AddCourse/AddCourse";
+import AddArticle from "./pages/News/AddArticle/AddArticle";
+import AddService from "./pages/Services/AddService/AddService";
+import AddSubService from "./pages/Services/AddSubService/AddSubService";
+import AddReview from "./pages/Reviews/AddReview/AddReview";
+import Mails from "./pages/Mails";
 
 const App = () => {
   return (
@@ -47,6 +56,30 @@ const App = () => {
               <Route
                 element={
                   <LoggedInLayout>
+                    <Courses />
+                  </LoggedInLayout>
+                }
+                path="/courses"
+              />
+              <Route
+                element={
+                  <LoggedInLayout>
+                    <CourseDetails />
+                  </LoggedInLayout>
+                }
+                path="/course-details/:id"
+              />
+              <Route
+                element={
+                  <LoggedInLayout>
+                    <AddCourse />
+                  </LoggedInLayout>
+                }
+                path="/add-course"
+              />
+              <Route
+                element={
+                  <LoggedInLayout>
                     <Careers />
                   </LoggedInLayout>
                 }
@@ -59,6 +92,14 @@ const App = () => {
                   </LoggedInLayout>
                 }
                 path="/career-details/:id"
+              />
+              <Route
+                element={
+                  <LoggedInLayout>
+                    <AddCareer />
+                  </LoggedInLayout>
+                }
+                path="/add-career"
               />
               <Route
                 element={
@@ -79,6 +120,14 @@ const App = () => {
               <Route
                 element={
                   <LoggedInLayout>
+                    <AddCategory />
+                  </LoggedInLayout>
+                }
+                path="/add-category"
+              />
+              <Route
+                element={
+                  <LoggedInLayout>
                     <News />
                   </LoggedInLayout>
                 }
@@ -91,6 +140,14 @@ const App = () => {
                   </LoggedInLayout>
                 }
                 path="/article-details/:id"
+              />
+              <Route
+                element={
+                  <LoggedInLayout>
+                    <AddArticle />
+                  </LoggedInLayout>
+                }
+                path="/add-article"
               />
               <Route
                 element={
@@ -111,6 +168,14 @@ const App = () => {
               <Route
                 element={
                   <LoggedInLayout>
+                    <AddReview />
+                  </LoggedInLayout>
+                }
+                path="/add-review"
+              />
+              <Route
+                element={
+                  <LoggedInLayout>
                     <MainServices />
                   </LoggedInLayout>
                 }
@@ -127,6 +192,22 @@ const App = () => {
               <Route
                 element={
                   <LoggedInLayout>
+                    <AddService />
+                  </LoggedInLayout>
+                }
+                path="/add-service"
+              />
+              <Route
+                element={
+                  <LoggedInLayout>
+                    <AddSubService />
+                  </LoggedInLayout>
+                }
+                path="/add-sub-service"
+              />
+              <Route
+                element={
+                  <LoggedInLayout>
                     <SubServiceDetails />
                   </LoggedInLayout>
                 }
@@ -135,10 +216,10 @@ const App = () => {
               <Route
                 element={
                   <LoggedInLayout>
-                    <SendMail />
+                    <Mails />
                   </LoggedInLayout>
                 }
-                path="/send-mail"
+                path="/mails"
               />
             </Routes>
           </BrowserRouter>

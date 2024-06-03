@@ -176,3 +176,42 @@ export const GoBackArrow = () => {
     </svg>
   );
 };
+
+export const CloseIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="12"
+      viewBox="0 0 14 12"
+      fill="none"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M10.933 10.6093C11.2045 10.8638 11.6447 10.8638 11.9162 10.6093C12.1878 10.3547 12.1878 9.94198 11.9162 9.68745L7.98317 6.00018L11.9163 2.31292C12.1878 2.05837 12.1878 1.64566 11.9163 1.39111C11.6447 1.13656 11.2045 1.13656 10.933 1.39111L6.99987 5.07834L3.06679 1.39112C2.79527 1.13657 2.35505 1.13657 2.08352 1.39112C1.812 1.64567 1.812 2.05839 2.08352 2.31294L6.01658 6.00018L2.08353 9.68745C1.81201 9.94198 1.81201 10.3547 2.08353 10.6093C2.35506 10.8638 2.79528 10.8638 3.0668 10.6093L6.99987 6.92201L10.933 10.6093Z"
+        fill="white"
+      />
+    </svg>
+  );
+};
+
+export const ArrowDown = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <path
+        d="M5 7.5L10 12.5L15 7.5"
+        stroke="#667085"
+        strokeWidth="1.66667"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};

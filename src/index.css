@@ -2,12 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0em;
+  height: 0em;
+}
+
 @layer utilities {
   .main-container{
     @apply w-full h-full bg-white border rounded-xl flex flex-col gap-4 overflow-hidden;
   }
   .btn {
-    @apply py-[10px] px-4 w-full flex items-center justify-center whitespace-nowrap rounded-lg border shadow text-white font-semibold duration-300;
+    @apply py-[10px] px-4 w-full flex items-center justify-center whitespace-nowrap rounded-lg border shadow text-white font-semibold duration-300 cursor-pointer;
   }
   .btn-primary {
     @apply btn bg-secondary border-secondary  hover:bg-primary hover:border-primary;

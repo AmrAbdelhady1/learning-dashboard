@@ -37,7 +37,7 @@ const CareerDetails = () => {
 
         <p>
           <span className="text-primary">{t("Career City")}: </span>
-          {data?.city}
+          {t("locale") === "ar" ? data?.city?.nameArabic : data?.city?.name}
         </p>
 
         <p>

@@ -11,5 +11,17 @@
   "Sub Service Image": "صورة الخدمة الفرعية",
   "Sub Service Name": "اسم الخدمة الفرعية",
   "Sub Service": "الخدمة الفرعية",
-  "SubServices": "الخدمة الفرعية"
+  "SubServices": "الخدمة الفرعية",
+  "Enter the service name": "أدخل اسم الخدمة",
+  "Service Name is required": "اسم الخدمة مطلوب",
+  "Service Name Arabic": "اسم الخدمة بالعربية",
+  "Enter the Service Name Arabic": "أدخل اسم الخدمة بالعربية",
+  "Service Name Arabic is required": "اسم الخدمة بالعربية مطلوب",
+  "Enter the description arabic": "أدخل الوصف بالعربية",
+  "Description Arabic is required": "الوصف بالعربية مطلوب",
+  "Enter the sub service name":"أدخل اسم الخدمة الفرعية",
+  "Sub Service Name is required":"اسم الخدمة الفرعية مطلوب",
+  "Sub Service Name Arabic":"اسم الخدمة الفرعية بالعربية",
+  "Enter the Sub Service Name Arabic":"أدخل اسم الخدمة الفرعية بالعربية",
+  "Sub Service Name Arabic is required":"اسم الخدمة الفرعية بالعربية مطلوب"  
 }

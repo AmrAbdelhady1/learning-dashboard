@@ -8,10 +8,18 @@ import { DeleteIcon, EditIcon, ShowIcon } from "../../assets/svg/header-svg";
 import DeleteMenu from "../../components/DeleteMenu/DeleteMenu";
 import { Link } from "react-router-dom";
 import { useServices } from "./Services.hooks";
+import { MAIN_URL } from "../../../env";
+import EditService from "./EditService";
 
-const Services = () => {
+interface Props{
+  showTabs: () => void;
+  hideTabs: () => void;
+}
+
+const Services = ({showTabs, hideTabs}:Props) => {
   const { t } = useTranslation();
   const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [openEditPage, setOpenPage] = useState<boolean>(false);
   const {
     data,
     count,
@@ -41,7 +49,7 @@ const Services = () => {
         if (formattedValue) {
           return (
             <img
-              src={formattedValue}
+              src={`${MAIN_URL}${formattedValue}`}
               alt="service"
               width={40}
               height={40}
@@ -88,7 +96,14 @@ const Services = () => {
             <Link to={`/service-details/${row?.id}`} className="cursor-pointer">
               <ShowIcon />
             </Link>
-            <span className="cursor-pointer">
+            <span
+              className="cursor-pointer"
+              onClick={() => {
+                handleEditPage();
+                setSelectedItem(row);
+                hideTabs();
+              }}
+            >
               <EditIcon />
             </span>
             <span
@@ -111,10 +126,24 @@ const Services = () => {
     }
   };
 
-  return (
+  const handleEditPage = () => {
+    setOpenPage(!openEditPage);
+  };
+
+  return openEditPage ? (
+    <EditService
+      serviceData={selectedItem}
+      onClose={() => {
+        handleEditPage();
+        setSelectedItem(null);
+        showTabs();
+      }}
+    />
+  ) : (
     <MainPageContainer
       title="Services"
       btnName="Service"
+      btnLink="/add-service"
       search={search}
       onChange={(e) => setSearch(e.target.value)}
     >
