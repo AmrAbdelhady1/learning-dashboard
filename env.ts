@@ -1,1 +1,1 @@
-export const MAIN_URL = "http://detc.somee.com"
+export const MAIN_URL = "https://detc.somee.com"
