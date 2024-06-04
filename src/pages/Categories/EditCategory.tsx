@@ -88,6 +88,7 @@ const EditCategory = ({ categoryData, onClose }: Props) => {
             label="Category Name"
             register={register}
             placeholder="Enter your category name"
+            required
           />
           {errors.categoryName && (
             <ErrorMessage message="Category Name is required" />
@@ -101,6 +102,7 @@ const EditCategory = ({ categoryData, onClose }: Props) => {
             label="Category Name Arabic"
             register={register}
             placeholder="Enter your category name arabic"
+            required
           />
           {errors.categoryNameArabic && (
             <ErrorMessage message="Category Name Arabic is required" />

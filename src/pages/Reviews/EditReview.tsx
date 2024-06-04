@@ -134,6 +134,7 @@ const EditReview = ({ reviewData, onClose }: Props) => {
             label="Title"
             register={register}
             placeholder="Enter the title"
+            required={false}
           />
           {errors.Title && <ErrorMessage message="Title is required" />}
         </div>
@@ -145,6 +146,7 @@ const EditReview = ({ reviewData, onClose }: Props) => {
             label="Title Arabic"
             register={register}
             placeholder="Enter the title arabic"
+            required={false}
           />
           {errors.TitleArabic && (
             <ErrorMessage message="Title Arabic is required" />
@@ -158,6 +160,7 @@ const EditReview = ({ reviewData, onClose }: Props) => {
             label="Job"
             register={register}
             placeholder="Enter the job"
+            required
           />
           {errors.Job && <ErrorMessage message="Job is required" />}
         </div>
@@ -169,6 +172,7 @@ const EditReview = ({ reviewData, onClose }: Props) => {
             label="Job Arabic"
             register={register}
             placeholder="Enter the job arabic"
+            required
           />
           {errors.JobArabic && (
             <ErrorMessage message="Job Arabic is required" />
@@ -182,6 +186,7 @@ const EditReview = ({ reviewData, onClose }: Props) => {
             label="Reviwer Name"
             register={register}
             placeholder="Enter the reviwer name"
+            required
           />
           {errors.ReviwerName && (
             <ErrorMessage message="Reviwer Name is required" />
@@ -195,6 +200,7 @@ const EditReview = ({ reviewData, onClose }: Props) => {
             label="Reviwer Name Arabic"
             register={register}
             placeholder="Enter the reviwer name arabic"
+            required
           />
           {errors.ReviwerNameArabic && (
             <ErrorMessage message="Reviwer Name Arabic is required" />
@@ -208,6 +214,7 @@ const EditReview = ({ reviewData, onClose }: Props) => {
             label="Description"
             register={register}
             placeholder="Enter the description"
+            required
           />
           {errors.Description && (
             <ErrorMessage message="Description is required" />
@@ -221,6 +228,7 @@ const EditReview = ({ reviewData, onClose }: Props) => {
             label="Description Arabic"
             register={register}
             placeholder="Enter the description arabic"
+            required
           />
           {errors.DescriptionArabic && (
             <ErrorMessage message="Description Arabic is required" />

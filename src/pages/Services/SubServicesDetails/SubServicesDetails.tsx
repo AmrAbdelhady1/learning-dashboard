@@ -12,7 +12,7 @@ const SubServiceDetails = () => {
   const { data }: any = useSubServiceDetails(params.id!);
 
   return (
-    <DetailsPageContainer link="/services?tab=sub_services" title="Service Details">
+    <DetailsPageContainer link="/services?tab=sub_services" title="Sub Service Details">
       <div className="flex flex-col gap-4 px-8 text-lg text-gray500 font-medium">
         <p>
           <span className="text-primary">{t("Sub Service Name")}: </span>

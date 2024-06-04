@@ -130,6 +130,7 @@ const EditService = ({ serviceData, onClose }: Props) => {
             label="Service Name"
             register={register}
             placeholder="Enter the service name"
+            required
           />
           {errors.ServiceName && (
             <ErrorMessage message="Service Name is required" />
@@ -143,6 +144,7 @@ const EditService = ({ serviceData, onClose }: Props) => {
             label="Service Name Arabic"
             register={register}
             placeholder="Enter the Service Name Arabic"
+            required
           />
           {errors.ServiceNameArabic && (
             <ErrorMessage message="Service Name Arabic is required" />
@@ -156,6 +158,7 @@ const EditService = ({ serviceData, onClose }: Props) => {
             label="Description"
             register={register}
             placeholder="Enter the description"
+            required={false}
           />
           {errors.Description && (
             <ErrorMessage message="Description is required" />
@@ -169,6 +172,7 @@ const EditService = ({ serviceData, onClose }: Props) => {
             label="Description Arabic"
             register={register}
             placeholder="Enter the description arabic"
+            required={false}
           />
           {errors.DescriptionArabic && (
             <ErrorMessage message="Description Arabic is required" />

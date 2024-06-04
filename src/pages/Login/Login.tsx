@@ -80,6 +80,7 @@ export const Login = () => {
             label="User Name"
             register={register}
             placeholder="Enter your username"
+            required
           />
           {errors.username && <ErrorMessage message="User Name is required" />}
         </div>
@@ -91,6 +92,7 @@ export const Login = () => {
             label="Password"
             register={register}
             placeholder="Enter your password"
+            required
           />
           {errors.password && <ErrorMessage message="Password is required" />}
         </div>

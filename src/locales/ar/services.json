@@ -23,5 +23,6 @@
   "Sub Service Name is required":"اسم الخدمة الفرعية مطلوب",
   "Sub Service Name Arabic":"اسم الخدمة الفرعية بالعربية",
   "Enter the Sub Service Name Arabic":"أدخل اسم الخدمة الفرعية بالعربية",
-  "Sub Service Name Arabic is required":"اسم الخدمة الفرعية بالعربية مطلوب"  
+  "Sub Service Name Arabic is required":"اسم الخدمة الفرعية بالعربية مطلوب" ,
+  "Sub Service Details": "تفاصيل الخدمة الفرعية"
 }

@@ -10,9 +10,10 @@ interface Props {
   label: string;
   placeholder: string;
   register: UseFormRegister<any>;
+  required: boolean;
 }
 
-const InputField = ({ label, name, type, placeholder, register }: Props) => {
+const InputField = ({ label, name, type, placeholder, register, required }: Props) => {
   const { t } = useTranslation();
   const [touched, setTouched] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -36,7 +37,7 @@ const InputField = ({ label, name, type, placeholder, register }: Props) => {
           placeholder={t(placeholder)}
           onFocus={() => setTouched(true)}
           {...register(name, {
-            required: true,
+            required: required,
             onBlur: () => setTouched(false),
           })}
         />
@@ -54,7 +55,7 @@ const InputField = ({ label, name, type, placeholder, register }: Props) => {
         type="text"
         className="w-full bg-transparent py-2.5 px-3.5 border border-secondary rounded-lg focus:outline-none focus:border-transparent focus:ring-2 focus:ring-primary"
         placeholder={t(placeholder)}
-        {...register(name, { required: true })}
+        {...register(name, { required: required })}
       />
     </div>
   );

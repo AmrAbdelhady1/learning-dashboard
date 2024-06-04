@@ -57,57 +57,71 @@ const EditSubService = ({ subServiceData, onClose }: Props) => {
     (item) => item?.id === subServiceData?.serviceId
   );
   const [selectedService, setSelectedService] = useState<any>(selected);
+  const [serviceError, setServiceError] = useState<boolean>(false);
 
   useEffect(() => {
     setSelectedService(selected);
   }, [selected]);
 
   const onSubmit = async (data: any) => {
-    try {
-      dispatch(
-        updateLoader({
-          details: {
-            title: t("Please Wait..."),
-            desc: t("Please Wait..."),
-          },
-          show: true,
-        })
-      );
-
-      const res = await fetchData(
-        {
-          ...data,
-          ImageFile: uploadedFile,
-          ServiceId: selectedService?.id,
-        },
-        `SubServices/${subServiceData?.id}`,
-        "PUT",
-        true
-      );
-
-      if (res?.data) {
-        dispatch(addSnackbar({ message: res?.message }));
-        navigate(`/sub-service-details/${res?.data?.id}`);
-      } else {
+    const valid = handleValidation();
+    if (valid) {
+      try {
         dispatch(
-          addSnackbar({
-            message: res?.errorMessage,
-            type: "error",
+          updateLoader({
+            details: {
+              title: t("Please Wait..."),
+              desc: t("Please Wait..."),
+            },
+            show: true,
+          })
+        );
+
+        const res = await fetchData(
+          {
+            ...data,
+            ImageFile: uploadedFile,
+            ServiceId: selectedService?.id,
+          },
+          `SubServices/${subServiceData?.id}`,
+          "PUT",
+          true
+        );
+
+        if (res?.data) {
+          dispatch(addSnackbar({ message: res?.message }));
+          navigate(`/sub-service-details/${res?.data?.id}`);
+        } else {
+          dispatch(
+            addSnackbar({
+              message: res?.errorMessage,
+              type: "error",
+            })
+          );
+        }
+      } catch (err) {
+        dispatch(addSnackbar({ message: t("network error"), type: "error" }));
+      } finally {
+        dispatch(
+          updateLoader({
+            details: {
+              title: t("Please Wait..."),
+              desc: t("Please Wait..."),
+            },
+            show: false,
           })
         );
       }
-    } catch (err) {
-      dispatch(addSnackbar({ message: t("network error"), type: "error" }));
-    } finally {
-      dispatch(
-        updateLoader({
-          details: {
-            title: t("Please Wait..."),
-            desc: t("Please Wait..."),
-          },
-          show: false,
-        })
-      );
+    }
+  };
+
+  const handleValidation = () => {
+    if (selectedService !== null) {
+      setServiceError(false);
+      return true;
+    } else {
+      setServiceError(true);
+      return false;
     }
   };
 
@@ -142,6 +156,7 @@ const EditSubService = ({ subServiceData, onClose }: Props) => {
             label="Sub Service Name"
             register={register}
             placeholder="Enter the sub service name"
+            required
           />
           {errors.SubServiceName && (
             <ErrorMessage message="Sub Service Name is required" />
@@ -155,6 +170,7 @@ const EditSubService = ({ subServiceData, onClose }: Props) => {
             label="Sub Service Name Arabic"
             register={register}
             placeholder="Enter the Sub Service Name Arabic"
+            required
           />
           {errors.SubServiceNameArabic && (
             <ErrorMessage message="Sub Service Name Arabic is required" />
@@ -168,6 +184,7 @@ const EditSubService = ({ subServiceData, onClose }: Props) => {
             label="Description"
             register={register}
             placeholder="Enter the description"
+            required={false}
           />
           {errors.Description && (
             <ErrorMessage message="Description is required" />
@@ -181,17 +198,21 @@ const EditSubService = ({ subServiceData, onClose }: Props) => {
             label="Description Arabic"
             register={register}
             placeholder="Enter the description arabic"
+            required={false}
           />
           {errors.DescriptionArabic && (
             <ErrorMessage message="Description Arabic is required" />
           )}
         </div>
 
-        <ServiceDropDown
-          data={serviceData}
-          selectedItem={selectedService}
-          setSelectedItem={setSelectedService}
-        />
+        <div className="flex flex-col">
+          <ServiceDropDown
+            data={serviceData}
+            selectedItem={selectedService}
+            setSelectedItem={setSelectedService}
+          />
+          {serviceError && <ErrorMessage message="Service is required" />}
+        </div>
 
         <div className="flex flex-col gap-1.5">
           <p className="text-sm capitalize text-gray600">{t("Upload Image")}</p>

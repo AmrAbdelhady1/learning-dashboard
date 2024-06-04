@@ -36,6 +36,11 @@
   "Arabic Location is required": "الموقع العربي مطلوب",
   "City": "المدينة",
   "Onsite": "في الموقع",
-  "Please select the": "يرجى اختيار"
+  "Please select the": "يرجى اختيار",
+  "City is required": "مدينة مطلوبة",
+  "Type is required": "نوع مطلوب",
+  "Site is required": "موقع مطلوب",
+  "Service is required": "خدمة مطلوبة"
+
 
 }

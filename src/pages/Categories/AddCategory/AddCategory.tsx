@@ -78,6 +78,7 @@ const AddCategory = () => {
             label="Category Name"
             register={register}
             placeholder="Enter your category name"
+            required
           />
           {errors.categoryName && (
             <ErrorMessage message="Category Name is required" />
@@ -91,6 +92,7 @@ const AddCategory = () => {
             label="Category Name Arabic"
             register={register}
             placeholder="Enter your category name arabic"
+            required
           />
           {errors.categoryNameArabic && (
             <ErrorMessage message="Category Name Arabic is required" />

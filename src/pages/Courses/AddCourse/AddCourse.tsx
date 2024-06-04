@@ -126,6 +126,7 @@ const AddCourse = () => {
             label="Course Name"
             register={register}
             placeholder="Enter the course name"
+            required
           />
           {errors.CourseName && (
             <ErrorMessage message="Course Name is required" />
@@ -139,6 +140,7 @@ const AddCourse = () => {
             label="Course Name Arabic"
             register={register}
             placeholder="Enter the course name arabic"
+            required
           />
           {errors.CourseNameArabic && (
             <ErrorMessage message="Course Name Arabic is required" />
@@ -170,6 +172,7 @@ const AddCourse = () => {
             label="Description"
             register={register}
             placeholder="Enter the description"
+            required={false}
           />
           {errors.Description && (
             <ErrorMessage message="Description Name is required" />
@@ -183,6 +186,7 @@ const AddCourse = () => {
             label="Description Arabic"
             register={register}
             placeholder="Enter the description arabic"
+            required={false}
           />
           {errors.DescriptionArabic && (
             <ErrorMessage message="Description Arabic Arabic is required" />
@@ -196,6 +200,7 @@ const AddCourse = () => {
             label="Minimum Age"
             register={register}
             placeholder="Enter the minimum age"
+            required={false}
           />
           {errors.MinAge && <ErrorMessage message="Minimum Age is required" />}
         </div>
@@ -207,6 +212,7 @@ const AddCourse = () => {
             label="Maximum Age"
             register={register}
             placeholder="Enter the maximum age"
+            required={false}
           />
           {errors.MaxAge && <ErrorMessage message="Maximum Age is required" />}
         </div>
@@ -218,6 +224,7 @@ const AddCourse = () => {
             label="Price"
             register={register}
             placeholder="Enter the price"
+            required
           />
           {errors.Price && <ErrorMessage message="Price is required" />}
         </div>
@@ -229,6 +236,7 @@ const AddCourse = () => {
             label="Discount"
             register={register}
             placeholder="Enter the discount"
+            required={false}
           />
           {errors.Discount && (
             <ErrorMessage message="Discount Arabic is required" />

@@ -47,6 +47,7 @@ const EditArticle = ({ articleData, onClose }: Props) => {
       ContentArabic: articleData?.contentArabic,
       Title: articleData?.title,
       TitleArabic: articleData?.titleArabic,
+      PublishedDate: articleData?.publishedDate,
     },
   });
   const [uploadedFile, setUploadedFile] = useState<UploadedFile | any>(
@@ -132,6 +133,7 @@ const EditArticle = ({ articleData, onClose }: Props) => {
             label="Author"
             register={register}
             placeholder="Enter the author"
+            required
           />
           {errors.Author && <ErrorMessage message="Author is required" />}
         </div>
@@ -143,6 +145,7 @@ const EditArticle = ({ articleData, onClose }: Props) => {
             label="Author Arabic"
             register={register}
             placeholder="Enter the course author arabic"
+            required
           />
           {errors.AuthorArabic && (
             <ErrorMessage message="Author Arabic is required" />
@@ -156,6 +159,7 @@ const EditArticle = ({ articleData, onClose }: Props) => {
             label="Title"
             register={register}
             placeholder="Enter the title"
+            required
           />
           {errors.Title && <ErrorMessage message="Title is required" />}
         </div>
@@ -167,6 +171,7 @@ const EditArticle = ({ articleData, onClose }: Props) => {
             label="Title Arabic"
             register={register}
             placeholder="Enter the title arabic"
+            required
           />
           {errors.TitleArabic && (
             <ErrorMessage message="Title Arabic is required" />
@@ -180,6 +185,7 @@ const EditArticle = ({ articleData, onClose }: Props) => {
             label="Content"
             register={register}
             placeholder="Enter the content"
+            required
           />
           {errors.Content && <ErrorMessage message="Content is required" />}
         </div>
@@ -191,9 +197,29 @@ const EditArticle = ({ articleData, onClose }: Props) => {
             label="Content Arabic"
             register={register}
             placeholder="Enter the content arabic"
+            required
           />
           {errors.ContentArabic && (
             <ErrorMessage message="Content Arabic is required" />
+          )}
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label
+            htmlFor="PublishedDate"
+            className="text-sm capitalize text-gray600"
+          >
+            {t("Published Date")}
+          </label>
+          <input
+            type="datetime-local"
+            id="PublishedDate"
+            className="border border-secondary rounded-lg px-3 py-2 h-[46px] focus:outline-none"
+            {...register("PublishedDate", { required: true })}
+            max={new Date().toISOString().slice(0, 16)}
+          />
+          {errors.PublishedDate && (
+            <ErrorMessage message="Published Date is required" />
           )}
         </div>
 

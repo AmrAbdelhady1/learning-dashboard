@@ -115,6 +115,7 @@ const AddReview = () => {
             label="Title"
             register={register}
             placeholder="Enter the title"
+            required={false}
           />
           {errors.Title && <ErrorMessage message="Title is required" />}
         </div>
@@ -126,6 +127,7 @@ const AddReview = () => {
             label="Title Arabic"
             register={register}
             placeholder="Enter the title arabic"
+            required={false}
           />
           {errors.TitleArabic && (
             <ErrorMessage message="Title Arabic is required" />
@@ -139,6 +141,7 @@ const AddReview = () => {
             label="Job"
             register={register}
             placeholder="Enter the job"
+            required
           />
           {errors.Job && <ErrorMessage message="Job is required" />}
         </div>
@@ -150,6 +153,7 @@ const AddReview = () => {
             label="Job Arabic"
             register={register}
             placeholder="Enter the job arabic"
+            required
           />
           {errors.JobArabic && (
             <ErrorMessage message="Job Arabic is required" />
@@ -163,6 +167,7 @@ const AddReview = () => {
             label="Reviwer Name"
             register={register}
             placeholder="Enter the reviwer name"
+            required
           />
           {errors.ReviwerName && (
             <ErrorMessage message="Reviwer Name is required" />
@@ -176,6 +181,7 @@ const AddReview = () => {
             label="Reviwer Name Arabic"
             register={register}
             placeholder="Enter the reviwer name arabic"
+            required
           />
           {errors.ReviwerNameArabic && (
             <ErrorMessage message="Reviwer Name Arabic is required" />
@@ -189,6 +195,7 @@ const AddReview = () => {
             label="Description"
             register={register}
             placeholder="Enter the description"
+            required
           />
           {errors.Description && (
             <ErrorMessage message="Description is required" />
@@ -202,6 +209,7 @@ const AddReview = () => {
             label="Description Arabic"
             register={register}
             placeholder="Enter the description arabic"
+            required
           />
           {errors.DescriptionArabic && (
             <ErrorMessage message="Description Arabic is required" />

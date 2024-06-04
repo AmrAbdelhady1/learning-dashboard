@@ -151,6 +151,7 @@ const EditCourse = ({ courseData, onClose }: Props) => {
             label="Course Name"
             register={register}
             placeholder="Enter the course name"
+            required
           />
           {errors.courseName && (
             <ErrorMessage message="Course Name is required" />
@@ -164,6 +165,7 @@ const EditCourse = ({ courseData, onClose }: Props) => {
             label="Course Name Arabic"
             register={register}
             placeholder="Enter the course name arabic"
+            required
           />
           {errors.courseNameArabic && (
             <ErrorMessage message="Course Name Arabic is required" />
@@ -195,6 +197,7 @@ const EditCourse = ({ courseData, onClose }: Props) => {
             label="Description"
             register={register}
             placeholder="Enter the description"
+            required={false}
           />
           {errors.description && (
             <ErrorMessage message="Description Name is required" />
@@ -208,6 +211,7 @@ const EditCourse = ({ courseData, onClose }: Props) => {
             label="Description Arabic"
             register={register}
             placeholder="Enter the description arabic"
+            required={false}
           />
           {errors.descriptionArabic && (
             <ErrorMessage message="Description Arabic Arabic is required" />
@@ -221,6 +225,7 @@ const EditCourse = ({ courseData, onClose }: Props) => {
             label="Minimum Age"
             register={register}
             placeholder="Enter the minimum age"
+            required={false}
           />
           {errors.minAge && <ErrorMessage message="Minimum Age is required" />}
         </div>
@@ -232,6 +237,7 @@ const EditCourse = ({ courseData, onClose }: Props) => {
             label="Maximum Age"
             register={register}
             placeholder="Enter the maximum age"
+            required={false}
           />
           {errors.maxAge && <ErrorMessage message="Maximum Age is required" />}
         </div>
@@ -243,6 +249,7 @@ const EditCourse = ({ courseData, onClose }: Props) => {
             label="Price"
             register={register}
             placeholder="Enter the price"
+            required
           />
           {errors.price && <ErrorMessage message="Price is required" />}
         </div>
@@ -254,6 +261,7 @@ const EditCourse = ({ courseData, onClose }: Props) => {
             label="Discount"
             register={register}
             placeholder="Enter the discount"
+            required={false}
           />
           {errors.discount && (
             <ErrorMessage message="Discount Arabic is required" />

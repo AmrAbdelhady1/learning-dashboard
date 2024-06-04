@@ -20,5 +20,7 @@
   "Content is required": "المحتوى مطلوب",
   "Content Arabic": "المحتوى بالعربية",
   "Enter the content arabic": "أدخل المحتوى بالعربية",
-  "Content Arabic is required": "المحتوى بالعربية مطلوب"
+  "Content Arabic is required": "المحتوى بالعربية مطلوب",
+  "Published Date": "تاريخ النشر",
+  "Published Date is required": "تاريخ النشر مطلوب"
 }
