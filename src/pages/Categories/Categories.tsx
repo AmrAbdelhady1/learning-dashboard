@@ -48,6 +48,21 @@ const Categories = () => {
       },
     },
     {
+      field: "subService",
+      headerName: t("Sub Service Name"),
+      flex: 1,
+      sortable: false,
+      renderCell: ({ row }) => {
+        return (
+          <>
+            {t("locale") === "ar"
+              ? row?.subService?.subServiceNameArabic
+              : row?.subService?.subServiceName}
+          </>
+        );
+      },
+    },
+    {
       field: "actions",
       headerName: t("Actions"),
       flex: 1,

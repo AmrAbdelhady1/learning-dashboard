@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AddForm from "../../components/AddForm/AddForm";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch } from "../../redux/store";
@@ -7,7 +7,9 @@ import InputField from "../../components/InputField/InputField";
 import { useForm } from "react-hook-form";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { fetchData } from "../../axios/axiosClient";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAddCourses } from "../Courses/Courses.hooks";
+import SubServiceDropDown from "../../components/InputField/SubServiceDropDown";
 
 interface Props {
   categoryData: any;
@@ -28,50 +30,69 @@ const EditCategory = ({ categoryData, onClose }: Props) => {
       categoryNameArabic: categoryData?.categoryNameArabic,
     },
   });
+  const [serviceError, setServiceError] = useState<boolean>(false);
+  const [selectedSubService, setSelectedSubService] = useState<any>(
+    categoryData?.subServiceId
+  );
+  const { subServiceData } = useAddCourses();
 
   const onSubmit = async (data: any) => {
-    try {
-      dispatch(
-        updateLoader({
-          details: {
-            title: t("Please Wait..."),
-            desc: t("Please Wait..."),
-          },
-          show: true,
-        })
-      );
-
-      const res = await fetchData(
-        {
-          ...data,
-        },
-        `Category/${categoryData?.id}`,
-        "PUT"
-      );
-
-      if (res?.data) {
-        navigate(`/category-details/${res?.data?.id}`);
-        dispatch(addSnackbar({ message: res?.message }));
-      } else {
+    const valid = handleValidation();
+    if (valid) {
+      try {
         dispatch(
-          addSnackbar({
-            message: res?.errorMessage,
-            type: "error",
+          updateLoader({
+            details: {
+              title: t("Please Wait..."),
+              desc: t("Please Wait..."),
+            },
+            show: true,
+          })
+        );
+
+        const res = await fetchData(
+          {
+            ...data,
+            subServiceId: selectedSubService?.id,
+          },
+          `Category/${categoryData?.id}`,
+          "PUT"
+        );
+
+        if (res?.data) {
+          navigate(`/category-details/${res?.data?.id}`);
+          dispatch(addSnackbar({ message: res?.message }));
+        } else {
+          dispatch(
+            addSnackbar({
+              message: res?.errorMessage,
+              type: "error",
+            })
+          );
+        }
+      } catch (err) {
+        dispatch(addSnackbar({ message: "network error", type: "error" }));
+      } finally {
+        dispatch(
+          updateLoader({
+            details: {
+              title: t("Please Wait..."),
+              desc: t("Please Wait..."),
+            },
+            show: false,
           })
         );
       }
-    } catch (err) {
-      dispatch(addSnackbar({ message: "network error", type: "error" }));
-    } finally {
-      dispatch(
-        updateLoader({
-          details: {
-            title: t("Please Wait..."),
-            desc: t("Please Wait..."),
-          },
-          show: false,
-        })
-      );
+    }
+  };
+
+  const handleValidation = () => {
+    if (selectedSubService !== null) {
+      setServiceError(false);
+      return true;
+    } else {
+      setServiceError(true);
+      return false;
     }
   };
 
@@ -107,6 +128,15 @@ const EditCategory = ({ categoryData, onClose }: Props) => {
           {errors.categoryNameArabic && (
             <ErrorMessage message="Category Name Arabic is required" />
           )}
+        </div>
+
+        <div className="flex flex-col">
+          <SubServiceDropDown
+            data={subServiceData}
+            selectedItem={selectedSubService}
+            setSelectedItem={setSelectedSubService}
+          />
+          {serviceError && <ErrorMessage message="Service is required" />}
         </div>
 
         <div className="flex items-center gap-2 pt-4 border-t col-span-2">
