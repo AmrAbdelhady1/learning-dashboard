@@ -7,9 +7,9 @@ import InputField from "../../components/InputField/InputField";
 import { useForm } from "react-hook-form";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { fetchData } from "../../axios/axiosClient";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
-export const Login = () => {
+export const Register = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const {
@@ -30,22 +30,21 @@ export const Login = () => {
         })
       );
 
-      const res = await fetchData(data, "Authenticate/login", "POST");
+      const res = await fetchData(data, "Authenticate/register-admin", "POST");
 
-      if (res?.token) {
-        dispatch(addSnackbar({ message: "Logged In Successfully" }));
-        navigate("/");
-        localStorage.setItem("access_token", res?.token);
+      if (res?.status === "Success") {
+        dispatch(addSnackbar({ message: "Account Created Successfully" }));
+        navigate("/login");
       } else {
         dispatch(
           addSnackbar({
-            message: "User name or Password is wrong",
+            message: "User already exists!",
             type: "error",
           })
         );
       }
     } catch (err) {
-      dispatch(addSnackbar({ message: "network error", type: "error" }));
+      dispatch(addSnackbar({ message: "Network Error", type: "error" }));
     } finally {
       dispatch(
         updateLoader({
@@ -63,10 +62,10 @@ export const Login = () => {
     <div className="px-4 min-h-screen flex items-center justify-center flex-col gap-8">
       <LogoSvg width="214" height="85" />
 
-      <div className="flex flex-col gap-2 text-center">
+      {/* <div className="flex flex-col gap-2 text-center">
         <p className="text-primary text-3xl">Welcome Back</p>
         <p className="text-gray500">Welcome back! Please enter your details.</p>
-      </div>
+      </div> */}
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -86,6 +85,18 @@ export const Login = () => {
 
         <div className="flex flex-col">
           <InputField
+            type="text"
+            name="email"
+            label="Email"
+            register={register}
+            placeholder="Enter your email"
+            required
+          />
+          {errors.email && <ErrorMessage message="Email is required" />}
+        </div>
+
+        <div className="flex flex-col">
+          <InputField
             type="password"
             name="password"
             label="Password"
@@ -98,11 +109,11 @@ export const Login = () => {
 
         <div className="flex flex-col gap-1 w-full items-end">
           <button type="submit" className="btn-primary mt-1">
-            Sign in
+            Register
           </button>
 
           <p className="text-sm text-gray500 hover:underline font-medium">
-            <Link to="/register">Create New Account?</Link>
+            <Link to="/login">Go to login page?</Link>
           </p>
         </div>
       </form>
@@ -110,4 +121,4 @@ export const Login = () => {
   );
 };
 
-export default LayoutWrapper(Login);
+export default LayoutWrapper(Register);

@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
 import { SnackbarContainer } from "./containers/Notifier";
 
+import Mails from "./pages/Mails";
 import Home from "./pages/Home/Home";
 import News from "./pages/News/News";
 import Login from "./pages/Login/Login";
@@ -13,23 +14,23 @@ import MainServices from "./pages/Services";
 import Careers from "./pages/Careers/Careers";
 import Reviews from "./pages/Reviews/Reviews";
 import Courses from "./pages/Courses/Courses";
+import Register from "./pages/Register/Register";
 import Categories from "./pages/Categories/Categories";
 import AddCareer from "./pages/Careers/AddCareer/AddCareer";
+import AddArticle from "./pages/News/AddArticle/AddArticle";
+import AddCourse from "./pages/Courses/AddCourse/AddCourse";
+import AddReview from "./pages/Reviews/AddReview/AddReview";
+import AddService from "./pages/Services/AddService/AddService";
 import AddCategory from "./pages/Categories/AddCategory/AddCategory";
 import LoggedInLayout from "./containers/LoggedInLayout/LoggedInLayout";
 import ArticleDetails from "./pages/News/ArticleDetails/ArticleDetails";
 import ReviewDetails from "./pages/Reviews/ReviewDetails/ReviewDetails";
 import CareerDetails from "./pages/Careers/CareerDetails/CareerDetails";
 import CourseDetails from "./pages/Courses/CourseDetails/CourseDetails";
+import AddSubService from "./pages/Services/AddSubService/AddSubService";
 import ServiceDetails from "./pages/Services/ServiceDetails/ServiceDetails";
 import CategoryDetails from "./pages/Categories/CategoryDetails/CategoryDetails";
 import SubServiceDetails from "./pages/Services/SubServicesDetails/SubServicesDetails";
-import AddCourse from "./pages/Courses/AddCourse/AddCourse";
-import AddArticle from "./pages/News/AddArticle/AddArticle";
-import AddService from "./pages/Services/AddService/AddService";
-import AddSubService from "./pages/Services/AddSubService/AddSubService";
-import AddReview from "./pages/Reviews/AddReview/AddReview";
-import Mails from "./pages/Mails";
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route element={<Login />} path="/login" />
+              <Route element={<Register />} path="/register" />
               <Route
                 element={
                   <LoggedInLayout>

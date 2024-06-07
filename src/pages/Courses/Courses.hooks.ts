@@ -5,7 +5,7 @@ import { fetchData as fetch } from "../../axios/axiosClient";
 import { useTranslation } from "react-i18next";
 
 export const useCourses = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [count, setCount] = useState(0);
