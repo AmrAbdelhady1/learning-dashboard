@@ -19,42 +19,55 @@ export const Register = () => {
   } = useForm();
 
   const onSubmit = async (data: any) => {
-    try {
+    if (/\s/.test(data.username)) {
       dispatch(
-        updateLoader({
-          details: {
-            title: "Please Wait...",
-            desc: "Please Wait...",
-          },
-          show: true,
+        addSnackbar({
+          message: "Please remove spaces from Username.",
+          type: "error",
         })
       );
-
-      const res = await fetchData(data, "Authenticate/register-admin", "POST");
-
-      if (res?.status === "Success") {
-        dispatch(addSnackbar({ message: "Account Created Successfully" }));
-        navigate("/login");
-      } else {
+    } else {
+      try {
         dispatch(
-          addSnackbar({
-            message: "User already exists!",
-            type: "error",
+          updateLoader({
+            details: {
+              title: "Please Wait...",
+              desc: "Please Wait...",
+            },
+            show: true,
+          })
+        );
+
+        const res = await fetchData(
+          data,
+          "Authenticate/register-admin",
+          "POST"
+        );
+
+        if (res?.status === "Success") {
+          dispatch(addSnackbar({ message: "Account Created Successfully" }));
+          navigate("/login");
+        } else {
+          dispatch(
+            addSnackbar({
+              message: "User already exists!",
+              type: "error",
+            })
+          );
+        }
+      } catch (err) {
+        dispatch(addSnackbar({ message: "Network Error", type: "error" }));
+      } finally {
+        dispatch(
+          updateLoader({
+            details: {
+              title: "Please Wait...",
+              desc: "Please Wait...",
+            },
+            show: false,
           })
         );
       }
-    } catch (err) {
-      dispatch(addSnackbar({ message: "Network Error", type: "error" }));
-    } finally {
-      dispatch(
-        updateLoader({
-          details: {
-            title: "Please Wait...",
-            desc: "Please Wait...",
-          },
-          show: false,
-        })
-      );
     }
   };
 
@@ -92,7 +105,15 @@ export const Register = () => {
             placeholder="Enter your email"
             required
           />
-          {errors.email && <ErrorMessage message="Email is required" />}
+          {errors.email && (
+            <ErrorMessage
+              message={
+                errors.email.message
+                  ? "Please enter a valid email"
+                  : "Email is required"
+              }
+            />
+          )}
         </div>
 
         <div className="flex flex-col">
@@ -104,7 +125,15 @@ export const Register = () => {
             placeholder="Enter your password"
             required
           />
-          {errors.password && <ErrorMessage message="Password is required" />}
+          {errors.password && (
+            <ErrorMessage
+              message={
+                errors.password.message
+                  ? "Minimum length is 6 characters"
+                  : "Password is required"
+              }
+            />
+          )}
         </div>
 
         <div className="flex flex-col gap-1 w-full items-end">

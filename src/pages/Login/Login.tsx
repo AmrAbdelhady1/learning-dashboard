@@ -93,7 +93,15 @@ export const Login = () => {
             placeholder="Enter your password"
             required
           />
-          {errors.password && <ErrorMessage message="Password is required" />}
+          {errors.password && (
+            <ErrorMessage
+              message={
+                errors.password.message
+                  ? "Minimum length is 6 characters"
+                  : "Password is required"
+              }
+            />
+          )}
         </div>
 
         <div className="flex flex-col gap-1 w-full items-end">
